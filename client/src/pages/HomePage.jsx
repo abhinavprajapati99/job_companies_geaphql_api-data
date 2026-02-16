@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react';
 import JobList from '../components/JobList';
-import { jobs } from '../lib/fake-data';
 import { getJobs } from '../lib/queries';
 
 function HomePage() {
+  const [jobs, setJobs] = useState([])
+  useEffect(() => {
+    getJobs().then(setJobs)
+  }, [])
 
-  getJobs().then((data) => console.log("datadata", data))
   return (
     <div>
       <h1 className="title">
